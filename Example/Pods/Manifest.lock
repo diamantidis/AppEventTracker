@@ -1,0 +1,16 @@
+PODS:
+  - AppEventTracker (0.1.0)
+
+DEPENDENCIES:
+  - AppEventTracker (from `../`)
+
+EXTERNAL SOURCES:
+  AppEventTracker:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  AppEventTracker: caf845eac4a5b47904abc98c74e62e4ebce317a7
+
+PODFILE CHECKSUM: d078833d6fb913230176ece538d2a65eb7541ae7
+
+COCOAPODS: 1.5.3
