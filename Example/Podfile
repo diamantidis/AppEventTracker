@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'AppEventTracker_Example' do
+  pod 'AppEventTracker', :path => '../'
+
+  target 'AppEventTracker_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
