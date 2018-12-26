@@ -58,7 +58,7 @@ public class AppEventTracker {
     /// As a result, events of type `uiButtonSendAction` will be added to the events property
     /// and the event hook will be called
     public static func enableUIButtonSendAction() {
-        UIButtonSendActionInjector.inject(into: [UIButton.self]) { receiver, event in
+        UIButtonSendActionInjector.inject(into: [UIButton.self]) { receiver, _ in
             let record = EventRecord(type: .uiButtonSendAction, name: "\(type(of: receiver))")
             hook?(.uiButtonSendAction, receiver)
             buffer?.push(record)

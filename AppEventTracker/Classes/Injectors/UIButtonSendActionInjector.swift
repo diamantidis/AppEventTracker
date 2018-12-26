@@ -19,7 +19,7 @@ class UIButtonSendActionInjector {
             fatalError("\(selector) must be implemented")
         }
 
-        var originalIMP: IMP? = nil
+        var originalIMP: IMP?
 
         let swizzledBlock: @convention(block) (UIControl, UIControl.Event) -> Void = { receiver, event in
             if let originalIMP = originalIMP {
