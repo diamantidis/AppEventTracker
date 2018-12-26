@@ -14,6 +14,8 @@
 		8599446C18229A753E79778BB449543A /* Pods-AppEventTracker_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1BEA7E72718DD8BBF4C20F2B7FE39AE5 /* Pods-AppEventTracker_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8D9321EE21C69DF000C20CBD /* FixedSizeBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9321ED21C69DF000C20CBD /* FixedSizeBuffer.swift */; };
 		8D9321F021C69E0700C20CBD /* ViewDidLoadInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9321EF21C69E0700C20CBD /* ViewDidLoadInjector.swift */; };
+		8DF1FA7321D16B680016CF0D /* DidReceiveMemoryWarningInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF1FA7221D16B680016CF0D /* DidReceiveMemoryWarningInjector.swift */; };
+		8DF1FA7521D16E010016CF0D /* UIButtonSendActionInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF1FA7421D16E010016CF0D /* UIButtonSendActionInjector.swift */; };
 		97F9055C0BB1B16C60FBB6A98592A238 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
 		B9A3FD111219068BA9F13A79996D5391 /* AppEventTracker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 13FAE8BD1F4477868DBFDCE7391F59AE /* AppEventTracker-dummy.m */; };
 		DE908A01DFE63724573BF4E62D4D37D5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
@@ -56,8 +58,10 @@
 		74D4E06A3FB0AAE8D6F9D950C6E0A5BF /* Pods-AppEventTracker_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AppEventTracker_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		7CFF5A657F821D1CFA909BF62FA31189 /* AppEventTracker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = AppEventTracker.modulemap; sourceTree = "<group>"; };
 		843EC82C1E6CE47FDF6CD6D41B43077B /* Pods-AppEventTracker_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AppEventTracker_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		8D9321ED21C69DF000C20CBD /* FixedSizeBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FixedSizeBuffer.swift; path = ../AppEventTracker/Classes/Helpers/FixedSizeBuffer.swift; sourceTree = "<group>"; };
-		8D9321EF21C69E0700C20CBD /* ViewDidLoadInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewDidLoadInjector.swift; path = ../AppEventTracker/Classes/Injectors/ViewDidLoadInjector.swift; sourceTree = "<group>"; };
+		8D9321ED21C69DF000C20CBD /* FixedSizeBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedSizeBuffer.swift; sourceTree = "<group>"; };
+		8D9321EF21C69E0700C20CBD /* ViewDidLoadInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDidLoadInjector.swift; sourceTree = "<group>"; };
+		8DF1FA7221D16B680016CF0D /* DidReceiveMemoryWarningInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DidReceiveMemoryWarningInjector.swift; sourceTree = "<group>"; };
+		8DF1FA7421D16E010016CF0D /* UIButtonSendActionInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonSendActionInjector.swift; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		95021801B05BF0FEEA561A933289C283 /* Pods-AppEventTracker_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AppEventTracker_Example-dummy.m"; sourceTree = "<group>"; };
 		952AD08BED4DEEB0B06E758027477835 /* Pods-AppEventTracker_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AppEventTracker_Tests-resources.sh"; sourceTree = "<group>"; };
@@ -173,8 +177,11 @@
 			isa = PBXGroup;
 			children = (
 				8D9321EF21C69E0700C20CBD /* ViewDidLoadInjector.swift */,
+				8DF1FA7221D16B680016CF0D /* DidReceiveMemoryWarningInjector.swift */,
+				8DF1FA7421D16E010016CF0D /* UIButtonSendActionInjector.swift */,
 			);
-			path = Injectors;
+			name = Injectors;
+			path = AppEventTracker/Classes/Injectors;
 			sourceTree = "<group>";
 		};
 		8D9321F221C69E1E00C20CBD /* Helpers */ = {
@@ -182,7 +189,8 @@
 			children = (
 				8D9321ED21C69DF000C20CBD /* FixedSizeBuffer.swift */,
 			);
-			path = Helpers;
+			name = Helpers;
+			path = AppEventTracker/Classes/Helpers;
 			sourceTree = "<group>";
 		};
 		A3277E0331DB89494AADB56FDF43965E /* Pods-AppEventTracker_Tests */ = {
@@ -378,9 +386,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DF1FA7521D16E010016CF0D /* UIButtonSendActionInjector.swift in Sources */,
 				B9A3FD111219068BA9F13A79996D5391 /* AppEventTracker-dummy.m in Sources */,
 				F20976CB9B5CA2BC4231F9CDB84B90FA /* AppEventTracker.swift in Sources */,
 				8D9321F021C69E0700C20CBD /* ViewDidLoadInjector.swift in Sources */,
+				8DF1FA7321D16B680016CF0D /* DidReceiveMemoryWarningInjector.swift in Sources */,
 				8D9321EE21C69DF000C20CBD /* FixedSizeBuffer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -23,7 +23,8 @@ class PopoverTableViewController: UITableViewController, UIPopoverPresentationCo
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "popoverReuseIdentifier", for: indexPath)
-        cell.textLabel?.text = "\(indexPath.row) - \(AppEventTracker.events[indexPath.row].name)"
+        let text = "\(AppEventTracker.events[indexPath.row].name) - \(AppEventTracker.events[indexPath.row].type)"
+        cell.textLabel?.text = text
 
         return cell
     }
