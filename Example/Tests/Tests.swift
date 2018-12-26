@@ -5,6 +5,8 @@ class Tests: XCTestCase {
 
     class MockViewController: UIViewController { }
 
+    class MockButton: UIButton { }
+
     func testViewDidLoadHook() {
 
         let expectation = self.expectation(description: "Hook is called")
@@ -33,6 +35,45 @@ class Tests: XCTestCase {
         XCTAssertEqual("MockViewController", AppEventTracker.events[1].name)
         XCTAssertEqual(.viewDidLoad, AppEventTracker.events[1].type)
 
+        wait(for: [expectation], timeout: 3)
+    }
+
+    func testUIButtonSendAction() {
+        let expectation = self.expectation(description: "Hook is called")
+
+        var hookButton: UIButton?
+        AppEventTracker.configure(size: 10) {_, data in
+            hookButton = data as? UIButton
+            expectation.fulfill()
+        }
+        AppEventTracker.enableUIButtonSendAction()
+
+        let button = MockButton()
+        button.sendActions(for: .touchUpInside)
+
+        XCTAssertEqual(hookButton, button)
+        XCTAssertEqual(.uiButtonSendAction, AppEventTracker.events.last?.type)
+        XCTAssertEqual("MockButton", AppEventTracker.events.last?.name)
+        wait(for: [expectation], timeout: 3)
+    }
+
+    func testDidReceiveMemoryWarning() {
+        let expectation = self.expectation(description: "Hook is called")
+
+        var hookVC: UIViewController?
+        AppEventTracker.configure(size: 10) {_, data in
+            hookVC = data as? UIViewController
+            expectation.fulfill()
+        }
+
+        AppEventTracker.enableDidReceiveMemoryWarning()
+
+        let uiVC = UIViewController()
+        uiVC.didReceiveMemoryWarning()
+
+        XCTAssertEqual(hookVC, uiVC)
+        XCTAssertEqual(.didReceiveMemoryWarning, AppEventTracker.events.last?.type)
+        XCTAssertEqual("UIViewController", AppEventTracker.events.last?.name)
         wait(for: [expectation], timeout: 3)
     }
 

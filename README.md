@@ -8,8 +8,8 @@
 [![codecov](https://codecov.io/gh/diamantidis/AppEventTracker/branch/master/graph/badge.svg)](https://codecov.io/gh/diamantidis/AppEventTracker)
 
 
-AppEventTracker is an iOS library to automatically track various events by injecting code to different functions, like for example `viewDidLoad`.
-The initial reason behind this library is to track the last 10 for example events before a crash so that the user can get a better understanding of the user flow before the crash.
+AppEventTracker is an iOS library to automatically track various events by injecting code to different functions, like for example `viewDidLoad`, `didReceiveMemoryWarning` or `sendAction`.
+The initial reason behind this library is to track the last 10, for example, events before a crash so that the user can get a better understanding of the user flow before the crash.
 
 ## Example
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
@@ -54,6 +54,10 @@ import AppEventTracker
 AppEventTracker.configure(size: 10)
 // Activate the events related with the viewDidLoad
 AppEventTracker.enableViewDidLoad()
+// Activate the events related with the UIButton's sendAction
+AppEventTracker.enableUIButtonSendAction()
+// Activate the events related with the UIViewController's didReceiveMemoryWarning
+AppEventTracker.enableDidReceiveMemoryWarning()
 ```
 
 ```swift

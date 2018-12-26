@@ -1,33 +1,33 @@
 //
-//  ViewDidLoadInjector.swift
+//  DidReceiveMemoryWarningInjector.swift
 //  AppEventTracker
 //
-//  Created by Ioannis Diamantidis on 12/16/18.
+//  Created by Ioannis Diamantidis on 12/24/18.
 //
 
 import UIKit
 
-/// Class to inject code to the viewDidLoad of UIViewController subclasses
-class ViewDidLoadInjector {
+/// Class to inject code to the didReceiveMemoryWarning of UIViewController subclasses
+class DidReceiveMemoryWarningInjector {
 
-    typealias ViewDidLoadRef = @convention(c)(UIViewController, Selector) -> Void
+    typealias DidReceiveMemoryWarningRef = @convention(c) (UIViewController, Selector) -> Void
 
-    private static let selector = #selector(UIViewController.viewDidLoad)
+    private static let selector = #selector(UIViewController.didReceiveMemoryWarning)
 
     static func inject<T>(into classType: T.Type, injection: @escaping (UIViewController) -> Void) {
         guard let originalMethod = class_getInstanceMethod(UIViewController.self, selector) else {
-            fatalError("\(selector) must be implemented")
+                fatalError("\(selector) must be implemented")
         }
 
         var originalIMP: IMP?
 
-        let swizzledBlock: @convention(block) (UIViewController) -> Void = { receiver in
+        let swizzledBlock: @convention(block) (UIViewController) -> Void = {receiver in
             if let originalIMP = originalIMP {
-                let castedIMP = unsafeBitCast(originalIMP, to: ViewDidLoadRef.self)
+                let castedIMP = unsafeBitCast(originalIMP, to: DidReceiveMemoryWarningRef.self)
                 castedIMP(receiver, selector)
             }
 
-            if ViewDidLoadInjector.canInject(to: receiver, classType: classType) {
+            if DidReceiveMemoryWarningInjector.canInject(to: receiver, classType: classType) {
                 injection(receiver)
             }
         }

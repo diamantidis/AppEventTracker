@@ -20,11 +20,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // To avoid loading the following code when running unit tests
         if ProcessInfo.processInfo.environment["XCInjectBundleInto"] == nil {
-            AppEventTracker.configure(size: 10) {eventType, viewController in
+            AppEventTracker.configure(size: 10) {eventType, selector in
                 print("eventType: \(eventType)")
-                print("viewController: \(viewController.debugDescription)")
+                print("selector: \(selector.debugDescription)")
             }
             AppEventTracker.enableViewDidLoad()
+            AppEventTracker.enableDidReceiveMemoryWarning()
+            AppEventTracker.enableUIButtonSendAction()
         }
 
         return true

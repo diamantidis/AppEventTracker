@@ -1,9 +1,9 @@
 Pod::Spec.new do |s|
     s.name             = 'AppEventTracker'
-    s.version          = '1.0.0'
+    s.version          = '1.0.1'
     s.summary          = 'AppEventTracker is an iOS library to automatically track various events.'
     s.description      = <<-DESC
-    AppEventTracker is an iOS library to automatically track various events by injecting code to different functions, like for example `viewDidLoad`.
+    AppEventTracker is an iOS library to automatically track various events by injecting code to different functions, like for example `viewDidLoad`,  `didReceiveMemoryWarning` or `sendAction`.
     DESC
 
     s.homepage         = 'https://github.com/diamantidis/AppEventTracker'

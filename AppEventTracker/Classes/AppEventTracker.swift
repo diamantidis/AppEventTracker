@@ -9,6 +9,8 @@ public class AppEventTracker {
     // MARK: - Enums, Structs, Typealiases, etc
     public enum EventType {
         case viewDidLoad
+        case didReceiveMemoryWarning
+        case uiButtonSendAction
     }
 
     public struct EventRecord {
@@ -37,6 +39,28 @@ public class AppEventTracker {
         ViewDidLoadInjector.inject(into: UIViewController.self) {
             let record = EventRecord(type: .viewDidLoad, name: "\(type(of: $0))")
             hook?(.viewDidLoad, $0)
+            buffer?.push(record)
+        }
+    }
+
+    /// Method to enable the didReceiveMemoryWarning events.
+    /// As a result, events of type `didReceiveMemoryWarning` will be added to the events property
+    /// and the event hook will be called
+    public static func enableDidReceiveMemoryWarning() {
+        DidReceiveMemoryWarningInjector.inject(into: UIViewController.self) {
+            let record = EventRecord(type: .didReceiveMemoryWarning, name: "\(type(of: $0))")
+            hook?(.didReceiveMemoryWarning, $0)
+            buffer?.push(record)
+        }
+    }
+
+    /// Method to enable the UIButton's sendAction events.
+    /// As a result, events of type `uiButtonSendAction` will be added to the events property
+    /// and the event hook will be called
+    public static func enableUIButtonSendAction() {
+        UIButtonSendActionInjector.inject(into: [UIButton.self]) { receiver, _ in
+            let record = EventRecord(type: .uiButtonSendAction, name: "\(type(of: receiver))")
+            hook?(.uiButtonSendAction, receiver)
             buffer?.push(record)
         }
     }
